@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div style="position: absolute; background-image: url(polyana.jpg); background-size: 100% 100%; height: 939px; width: 1880px; left: 0px; top: 0px;"></div>
+	<div style="height: 40px; width: 900px; background-color: white; position: absolute; left: 550px; top: 700px; border: 2px solid black">
+		<div class="time" style="height: 40px; width: 900px; background-color: blue; position: absolute; top: 0px; left: 0px"></div>
+	</div>
+	<h4 style="position: absolute; font-size: 20px; left: 940px; top: 750px">Score: <span class="score">0</span></h4>
+	<div style="position: absolute; width: 150px; height: 150px; background-color: none; left: 700px; top: 100px; background-image: url(qwer2.png); background-size: 100% 100%" class="box"></div>
+	<div style="position: absolute; width: 150px; height: 150px; background-color: none; left: 900px; top: 100px; background-image: url(qwer2.png); background-size: 100% 100%" class="box"></div>
+	<div style="position: absolute; width: 150px; height: 150px; background-color: none; left: 1100px; top: 100px; background-image: url(qwer2.png); background-size: 100% 100%" class="box"></div>
+	<div style="position: absolute; width: 150px; height: 150px; background-color: none; left: 700px; top: 300px; background-image: url(qwer2.png); background-size: 100% 100%" class="box"></div>
+	<div style="position: absolute; width: 150px; height: 150px; background-color: none; left: 900px; top: 300px; background-image: url(qwer2.png); background-size: 100% 100%" class="box"></div>
+	<div style="position: absolute; width: 150px; height: 150px; background-color: none; left: 1100px; top: 300px; background-image: url(qwer2.png); background-size: 100% 100%" class="box"></div>
+	<div style="position: absolute; width: 150px; height: 150px; background-color: none; left: 700px; top: 500px; background-image: url(qwer2.png); background-size: 100% 100%" class="box"></div>
+	<div style="position: absolute; width: 150px; height: 150px; background-color: none; left: 900px; top: 500px; background-image: url(qwer2.png); background-size: 100% 100%" class="box"></div>
+	<div style="position: absolute; width: 150px; height: 150px; background-color: none; left: 1100px; top: 500px; background-image: url(qwer2.png); background-size: 100% 100%" class="box"></div>
+
+
+	<script>
+		let box = document.querySelectorAll(".box");
+		let score = 0;
+		document.querySelector('.score').innerHTML = score;
+		let topt = [100, 100, 100, 300, 300, 300, 500, 500, 500];
+		let leftt = [700, 900, 1100, 700, 900, 1100, 700, 900, 1100];
+
+let time = document.querySelector(".time");
+let move = 900;
+let moveBottom = function(){
+    move = move - 20;
+    time.style.width = move + "px";
+    time.style.transition = "1s";
+
+    if(move == 0){
+        alert("TIME OUT!")
+    }
+}		
+
+	let wqw = function(){
+		let sed = document.createElement("div");
+		document.body.appendChild(sed);
+		sed.style.height = "100px";
+		sed.style.width = "100px";
+		sed.style.background = "yellow";
+		sed.style.position = "absolute";
+		sed.style.transition = "1s";
+		sed.style.backgroundImage = "url(antimole.png)";
+		sed.style.backgroundSize = "100% 100%";
+		sed.style.borderRadius = "20px";
+		sed.style.marginLeft = "25px";
+	
+		let qw = getRandom(8)
+		sed.style.left = leftt[qw] + "px";
+		sed.style.top = topt[qw] + "px";
+
+		sed.onclick = function(){
+			sed.style.display = "none";
+			score = score + 5;
+			document.querySelector('.score').innerHTML = score;
+			if(score == 50){
+				alert("YOU WIN!")
+			}else if(score <= -5){
+				alert("YOU LOOSE!")
+			}
+		}
+
+		let move_up = function(){
+        	sed.style.top = topt[qw] - 50 + "px";
+        }
+
+        let move_down = function(){
+        	sed.style.top = topt[qw] + "px";
+        }
+
+        function rt(){
+        	sed.style.opacity = 0;
+        }
+
+		function hide(){
+			sed.style.display = "none"
+		}
+
+		setTimeout(move_up, 500);
+		setTimeout(move_down, 2000);
+		setTimeout(rt, 2500);
+		setTimeout(hide, 3000);
+
+    }
+
+    let wer = function(){
+    	let sed1 = document.createElement("div");
+		document.body.appendChild(sed1);
+		sed1.style.height = "100px";
+		sed1.style.width = "100px";
+		sed1.style.background = "none";
+		sed1.style.position = "absolute";
+		sed1.style.transition = "1s";
+		sed1.style.backgroundImage = "url(mole1.png)";
+		sed1.style.backgroundSize = "100% 100%";
+		sed1.style.marginLeft = "25px";
+	
+		let qw1 = getRandom(8)
+		sed1.style.left = leftt[qw1] + "px";
+		sed1.style.top = topt[qw1] + "px";
+
+		sed1.onclick = function(){
+			sed1.style.display = "none";
+			score = score - 10;
+			document.querySelector('.score').innerHTML = score;
+			if(score == 50){
+				alert("YOU WIN!")
+			}else if(score <= -5){
+				alert("YOU LOOSE!")
+			}
+		}
+
+		let move_up1 = function(){
+        	sed1.style.top = topt[qw1] - 50 + "px";
+        }
+
+        let move_down1 = function(){
+        	sed1.style.top = topt[qw1] + "px";
+        }
+
+       	function rt1(){
+        	sed1.style.opacity = 0;
+        }
+
+		function hide1(){
+			sed1.style.display = "none"
+		}
+
+		setTimeout(move_up1, 500);
+		setTimeout(move_down1, 2000);
+		setTimeout(rt1, 2500);
+		setTimeout(hide1, 3000)
+	}
+		function getRandom(number){
+            let rand = Math.random() * number;
+            let round = Math.round(rand);
+            return round;
+        }
+    
+
+
+        setInterval(wqw, 3000);
+        setInterval(wer, 10000);
+        setInterval(moveBottom, 1000)
+        
+	</script>
+</body>
+</html>
